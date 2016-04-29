@@ -1,9 +1,25 @@
 <ion-view view-title="Notícias">
   <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="new in news" href="{{new.url}}">
-        {{new.title}}
-      </ion-item>
+    <ion-list card>
+      <ion-item ng-repeat="new in news" >
+	      <div class="item" >
+		    <h2>{{new.title}}</h2>
+		    <p>{{new.subtitle.substring(0, 30)}} ...</p>
+		  </div>
+        <div class="item item-image" >
+	    	<a href="{{new.url}}"><img ng-src="{{new.image}}"></a>
+	  	</div>
+ 		
+ 		<div class="item tabs tabs-secondary tabs-icon-left">
+	  	<a class="tab-item positive" ng-click="login({{'new.title'}}, {{'new.subtitle'}})">
+              <i class="icon ion-chatbox positive" ></i>
+              Leia mais
+         </a>
+	  	 <a class="tab-item positive" href="">
+		    <i class="icon ion-share"></i>
+		    Compartilhe
+		  </a>
+		  </div>
     </ion-list>
   </ion-content>
 </ion-view>

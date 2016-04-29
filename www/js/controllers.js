@@ -9,13 +9,46 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
+  $scope.loginData = {};
+
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/login.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeLogin = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the login modal
+  $scope.login = function(title,subtitle) {
+    $scope.modal.show();
+    $scope.title = title
+    $scope.subtitle = subtitle
+  };
+
+
+  // Perform the login action when the user submits the login form
+  $scope.doLogin = function() {
+    console.log('Doing login', $scope.loginData);
+
+    // Simulate a login delay. Remove this and replace with your login
+    // code if using a login system
+    $timeout(function() {
+      $scope.closeLogin();
+    }, 1000);
+  };
 })
 
 .controller('NewsCtrl', function($scope) {
   $scope.news = [
-    { title: 'News 1', url: '#'},
-    { title: 'News 2', url: '#'},
-    { title: 'News 3', url: '#'}
+    { title: 'Culto dos Jovens ', subtitle:'Sobre o culto: aasadfojsdfoijasdofijasoidjfoiasjdfoiajdsoifjasodifjaoidjfoiajdfoijadsoifjaoidsfjioasdjfoiajdsfoijadsoifjaoidjfoiadjgonfaondaoidsjfoiadjsfoiajsdfoijasd', url: 'cultodosjovens',image:'http://blog.cancaonova.com/cuiaba/files/2015/12/altar.jpg'},
+    { title: 'Culto de orações',subtitle:'Sobre de orações: cultoaasadfojsdfoijasdofijasoidjfoiasjdfoiajdsoifjasodifjaoidjfoiajdfoijadsoifjaoidsfjioasdjfoiajdsfoijadsoifjaoidjfoiadjgonfaondaoidsjfoiadjsfoiajsdfoijasd', url: 'cultodeoracao', image:'http://www.saleluz.org/site/wp-content/uploads/2015/07/oor.jpg'},
+    { title: 'Vigilia',subtitle:'Sobre a vigilia: cultoaasadfojsdfoijasdofijasoidjfoiasjdfoiajdsoifjasodifjaoidjfoiajdfoijadsoifjaoidsfjioasdjfoiajdsfoijadsoifjaoidjfoiadjgonfaondaoidsjfoiadjsfoiajsdfoijasd', url: 'vigilia', image:'http://mensagens.culturamix.com/blog/wp-content/gallery/o-poder-da-oracao/o-poder-da-oracao-6.jpg'}
+
   ];
 })
 
