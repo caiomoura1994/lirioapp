@@ -1,0 +1,15 @@
+<ion-view view-title="Cultos">
+  <ion-content>
+    <div class="card" ng-repeat="service in services" >
+      <div class="item item-divider">
+        {{ service.tipo_pagamento }}
+      </div>
+      <div class="item item-text-wrap" ng-repeat="schedule in service.services">
+        {{schedule.banco}}, sacado:{{schedule.sacado}}, Ag:{{ schedule.agencia }} Cc:{{ schedule.conta }}
+      </div>
+      <div class="item item-diver" ng-click="copyText('testando')" ng-repeat="schedule in service.services2" >
+        copiar linha digitavel {{schedule.linhadigitavel}}                    
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

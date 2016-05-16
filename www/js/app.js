@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,7 +21,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
 })
-
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -36,7 +35,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/contact',
     views: {
       'menuContent': {
-        templateUrl: 'templates/contact.html'
+        templateUrl: 'templates/contact.html',
+        controller:'contactCtrl'
+      }
+    }
+  })
+
+  .state('app.morecontact', {
+    url: '/morecontact/{id}?tel&email',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/morecontact.html',
+        controller:'contactitem'
       }
     }
   })
@@ -50,15 +60,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+  .state('app.doacoes', {
+      url: '/doacoes',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/doacoes.html',
+          controller: 'doacoesCtrl'
         }
       }
     })
+
 
     .state('app.news', {
       url: '/news',
@@ -72,3 +83,4 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/news');
 });
+
